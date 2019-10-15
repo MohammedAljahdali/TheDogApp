@@ -13,6 +13,8 @@
 		73CAE7A72354DCEF0030A788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CAE7A52354DCEF0030A788 /* Main.storyboard */; };
 		73CAE7A92354DCF10030A788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CAE7A82354DCF10030A788 /* Assets.xcassets */; };
 		73CAE7AC2354DCF10030A788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CAE7AA2354DCF10030A788 /* LaunchScreen.storyboard */; };
+		73CAE7B7235621930030A788 /* DogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAE7B6235621930030A788 /* DogAPI.swift */; };
+		73CAE7B9235622970030A788 /* DogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAE7B8235622970030A788 /* DogData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		73CAE7A82354DCF10030A788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73CAE7AB2354DCF10030A788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73CAE7AD2354DCF10030A788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73CAE7B6235621930030A788 /* DogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogAPI.swift; sourceTree = "<group>"; };
+		73CAE7B8235622970030A788 /* DogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,41 @@
 		73CAE79E2354DCEF0030A788 /* TheDogApp */ = {
 			isa = PBXGroup;
 			children = (
-				73CAE79F2354DCEF0030A788 /* AppDelegate.swift */,
-				73CAE7A12354DCEF0030A788 /* SceneDelegate.swift */,
-				73CAE7A32354DCEF0030A788 /* ViewController.swift */,
-				73CAE7A52354DCEF0030A788 /* Main.storyboard */,
-				73CAE7A82354DCF10030A788 /* Assets.xcassets */,
-				73CAE7AA2354DCF10030A788 /* LaunchScreen.storyboard */,
+				73CAE7B5235621320030A788 /* Model */,
+				73CAE7B4235621200030A788 /* Controller */,
+				73CAE7B3235620880030A788 /* View */,
 				73CAE7AD2354DCF10030A788 /* Info.plist */,
 			);
 			path = TheDogApp;
+			sourceTree = "<group>";
+		};
+		73CAE7B3235620880030A788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73CAE7A52354DCEF0030A788 /* Main.storyboard */,
+				73CAE7A82354DCF10030A788 /* Assets.xcassets */,
+				73CAE7AA2354DCF10030A788 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		73CAE7B4235621200030A788 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73CAE79F2354DCEF0030A788 /* AppDelegate.swift */,
+				73CAE7A12354DCEF0030A788 /* SceneDelegate.swift */,
+				73CAE7A32354DCEF0030A788 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		73CAE7B5235621320030A788 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				73CAE7B6235621930030A788 /* DogAPI.swift */,
+				73CAE7B8235622970030A788 /* DogData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +170,9 @@
 			files = (
 				73CAE7A42354DCEF0030A788 /* ViewController.swift in Sources */,
 				73CAE7A02354DCEF0030A788 /* AppDelegate.swift in Sources */,
+				73CAE7B9235622970030A788 /* DogData.swift in Sources */,
 				73CAE7A22354DCEF0030A788 /* SceneDelegate.swift in Sources */,
+				73CAE7B7235621930030A788 /* DogAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
