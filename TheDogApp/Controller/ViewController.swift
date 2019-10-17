@@ -17,10 +17,23 @@ class ViewController: UIViewController {
     }
     
     let randomDogUrl = DogAPI.UrlGenrator.randomDogPicture.url
+    let breadsListUrl = DogAPI.UrlGenrator.listOfAllBreads.url
     
     override func viewDidLoad() {
         super.viewDidLoad()
         requestImageUrl(url: randomDogUrl)
+        printBreads(url: breadsListUrl)
+    }
+    
+    func printBreads(url: URL) {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { print("printBreads error"); return }
+            let decoder = JSONDecoder()
+            let list = try! decoder.decode(BreadsList.self, from: data)
+            let list1 = list.breadsList.keys.map({$0})
+            print(list1)
+        }
+        task.resume()
     }
     
     func requestImageUrl(url: URL) {

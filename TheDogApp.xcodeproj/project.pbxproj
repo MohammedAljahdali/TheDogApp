@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		735DF59F2358B74B004F0CB3 /* BreadsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735DF59E2358B74B004F0CB3 /* BreadsList.swift */; };
 		73CAE7A02354DCEF0030A788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAE79F2354DCEF0030A788 /* AppDelegate.swift */; };
 		73CAE7A22354DCEF0030A788 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAE7A12354DCEF0030A788 /* SceneDelegate.swift */; };
 		73CAE7A42354DCEF0030A788 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CAE7A32354DCEF0030A788 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		735DF59E2358B74B004F0CB3 /* BreadsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadsList.swift; sourceTree = "<group>"; };
 		73CAE79C2354DCEF0030A788 /* TheDogApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheDogApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CAE79F2354DCEF0030A788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73CAE7A12354DCEF0030A788 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				73CAE7B6235621930030A788 /* DogAPI.swift */,
 				73CAE7B8235622970030A788 /* DogData.swift */,
+				735DF59E2358B74B004F0CB3 /* BreadsList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CAE7A42354DCEF0030A788 /* ViewController.swift in Sources */,
+				735DF59F2358B74B004F0CB3 /* BreadsList.swift in Sources */,
 				73CAE7A02354DCEF0030A788 /* AppDelegate.swift in Sources */,
 				73CAE7B9235622970030A788 /* DogData.swift in Sources */,
 				73CAE7A22354DCEF0030A788 /* SceneDelegate.swift in Sources */,

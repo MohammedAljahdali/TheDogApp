@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DogData: Decodable {
+class DogData: Codable {
     let message: String
     let status: String
 }

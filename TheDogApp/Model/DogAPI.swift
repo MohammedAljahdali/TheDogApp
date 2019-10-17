@@ -13,20 +13,14 @@ class DogAPI {
     
      enum UrlGenrator: String {
         case randomDogPicture = "https://dog.ceo/api/breeds/image/random"
+        case listOfAllBreads = "https://dog.ceo/api/breeds/list/all"
         
         var url: URL {
             return URL(string: self.rawValue)!
         }
     }
     
-//    class func requestRandomDogImage() {
-//        requestDogImageUrl(url: UrlGenrator.randomDogPicture.url) { (url, error) in
-//            guard let url = url else { print("nil url in DogAPI/requestRandomDogImage"); return }
-//            requestDogImage(url: url) { (image, error) in
-//
-//            }
-//        }
-//    }
+    
     
     class func requestDogImage(url: URL, completionHandler: @escaping (UIImage?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
