@@ -11,12 +11,24 @@ import UIKit
 
 class DogAPI {
     
-     enum UrlGenrator: String {
-        case randomDogPicture = "https://dog.ceo/api/breeds/image/random"
-        case listOfAllBreads = "https://dog.ceo/api/breeds/list/all"
+     enum UrlGenrator {
+        case randomDogPicture
+        case listOfAllBreads
+        case randomBreadPicture(String)
         
         var url: URL {
-            return URL(string: self.rawValue)!
+            return URL(string: self.stringValue)!
+        }
+        
+        var stringValue: String {
+            switch self {
+            case .randomDogPicture:
+                return "https://dog.ceo/api/breeds/image/random"
+            case .listOfAllBreads:
+                return"https://dog.ceo/api/breeds/list/all"
+            case .randomBreadPicture(let bread):
+                return "https://dog.ceo/api/breed/\(bread)/images/random"
+            }
         }
     }
     
@@ -36,6 +48,7 @@ class DogAPI {
     }
     
     class func requestDogImageUrl(url: URL, completionHandler: @escaping (URL?, Error?) -> Void) {
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 completionHandler(nil, error)

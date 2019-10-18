@@ -13,13 +13,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var dogImageView: UIImageView!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    @IBAction func changePicture(_ sender: Any) {
-        requestImageUrl(url: randomDogUrl)
+    @IBAction func changePicture(_ sender: UIButton) {
+        let row = pickerView.selectedRow(inComponent: 0)
+        switch sender.tag {
+        case 0:
+            requestImageUrl(url: DogAPI.UrlGenrator.randomBreadPicture(breadsList[row]).url)
+            break
+        case 1:
+            requestImageUrl(url: randomDogUrl)
+            break
+        default:
+            print("error in change Picture")
+        }
     }
+    
     
     var breadsList: [String] = []
     let randomDogUrl = DogAPI.UrlGenrator.randomDogPicture.url
     let breadsListUrl = DogAPI.UrlGenrator.listOfAllBreads.url
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +83,8 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        requestImageUrl(url: randomDogUrl)
+        let url = DogAPI.UrlGenrator.randomBreadPicture(breadsList[row]).url
+        requestImageUrl(url: url)
     }
     
     
