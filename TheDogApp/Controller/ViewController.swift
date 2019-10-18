@@ -11,29 +11,31 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var dogImageView: UIImageView!
+    @IBOutlet weak var pickerView: UIPickerView!
     
     @IBAction func changePicture(_ sender: Any) {
         requestImageUrl(url: randomDogUrl)
     }
     
+    var breadsList: [String] = []
     let randomDogUrl = DogAPI.UrlGenrator.randomDogPicture.url
     let breadsListUrl = DogAPI.UrlGenrator.listOfAllBreads.url
     
     override func viewDidLoad() {
         super.viewDidLoad()
         requestImageUrl(url: randomDogUrl)
-        printBreads(url: breadsListUrl)
+        DogAPI.requestBreadsList(url: breadsListUrl, completionHandler: breadListHelper(breadsList:error:))
+        pickerView.delegate = self
+        pickerView.dataSource = self
+
     }
     
-    func printBreads(url: URL) {
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { print("printBreads error"); return }
-            let decoder = JSONDecoder()
-            let list = try! decoder.decode(BreadsList.self, from: data)
-            let list1 = list.breadsList.keys.map({$0})
-            print(list1)
+    func breadListHelper(breadsList: [String]?, error: Error?) {
+        guard let breadsList = breadsList else {print("\(error!)\n breadListHelper error"); return }
+        DispatchQueue.main.async {
+            self.breadsList = breadsList
+            print("fine")
         }
-        task.resume()
     }
     
     func requestImageUrl(url: URL) {
@@ -53,30 +55,24 @@ class ViewController: UIViewController {
 
 
 }
-//    func dogImage(dogData: DogData) {
-//        let urlDogImage = URL(string: dogData.message)
-//        let task = URLSession.shared.dataTask(with: urlDogImage!) { (data, response, error) in
-//            guard let data = data else { print("error in dogImage func data"); return }
-//            let dogImage = UIImage(data: data)
-//            DispatchQueue.main.async {
-//                self.dogImageView.image = dogImage
-//            }
-//
-//        }
-//        task.resume()
-//    }
-//
-//    func decodeUrl(url: URL)  {
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            guard let data = data else { print("problem with data of url"); return }
-//            let decode = JSONDecoder()
-//            do {
-//            let dogData = try decode.decode(DogData.self, from: data)
-//                self.dogImage(dogData: dogData)
-//            } catch {
-//                print(error)
-//            }
-//        }
-//        task.resume()
-//
-//    }
+
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return breadsList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return breadsList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        requestImageUrl(url: randomDogUrl)
+    }
+    
+    
+}

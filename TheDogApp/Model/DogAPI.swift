@@ -53,4 +53,21 @@ class DogAPI {
         }
         task.resume()
     }
+    
+    class func requestBreadsList(url: URL, completionHandler: @escaping ([String]?, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { print("printBreads error"); return }
+            let decoder = JSONDecoder()
+            do {
+                let breadsList = try decoder.decode(BreadsList.self, from: data)
+                let breadsNames = breadsList.breadsList.keys.map({$0})
+                print(breadsNames)
+                completionHandler(breadsNames, nil)
+            } catch {
+                print("bread list error")
+                completionHandler(nil, error)
+            }
+        }
+        task.resume()
+    }
 }
